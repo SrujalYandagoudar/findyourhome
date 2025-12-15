@@ -1,0 +1,124 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+@import "tailwindcss";
+
+:root {
+  --background: #ffffff;
+  --foreground: #171717;
+
+  --font-sans: 'Montserrat', system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #0a0a0a;
+    --foreground: #ededed;
+      --font-sans: 'Montserrat', system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+  }
+}
+
+html{
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-sans);
+}
+
+nav ul li {
+    display: inline-block;   
+    padding-bottom: 4px;    
+    border-bottom: 2px solid transparent; 
+    transition: 0.2s ease;
+}
+
+nav ul li:hover {
+    color: #83b638;
+    border-bottom: 2px solid #83b638;
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-slideDown {
+  animation: slideDown 0.3s ease-out;
+}
+
+
+.font-weight{
+  font-weight: 500;
+}
+
+.shadowin:hover{
+  box-shadow: orange 0px 0px 5px 0px;
+}
+
+.shadowBtn:hover{
+  box-shadow: rgba(255, 166, 0, 0.322) 0px 5px  30px 0px;
+}
+
+.glass-shine {
+  position: relative;
+  overflow: hidden;
+}
+
+.glass-shine::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -150%;
+  width: 50%;
+  height: 100%;
+  background: linear-gradient(
+    120deg,
+    rgba(255, 255, 255, 0.2) 0%,
+    rgba(255, 255, 255, 0.5) 50%,
+    rgba(255, 255, 255, 0.1) 100%
+  );
+  transform: skewX(-20deg);
+  animation: shineMove 2.5s infinite;
+}
+
+@keyframes shineMove {
+  0% {
+    left: -150%;
+  }
+  100% {
+    left: 150%;
+  }
+
+}/* make sure preserve-3d utility exists or add small helpers */
+.transform-style-preserve-3d {
+  transform-style: preserve-3d;
+}
+
+/* optional slow spin class if you want to toggle auto-rotate purely by CSS */
+@keyframes spin-slow {
+  from { transform: rotateY(0deg); }
+  to   { transform: rotateY(360deg); }
+}
+.animate-spin-slow {
+  animation: spin-slow 16s linear infinite;
+}
+
+/* preserve-3d helper if your Tailwind doesn't include it */
+.transform-style-preserve-3d { transform-style: preserve-3d; }
+
+/* optional: make images smoother */
+img { backface-visibility: hidden; -webkit-backface-visibility: hidden; }
